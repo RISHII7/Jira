@@ -1,9 +1,11 @@
-import Image from "next/image";
+import { Component } from "@/features/component";
 
 export default function Home() {
   return (
     <div>
-      Jira Cloning in Progress!!
+      <Component>
+
+      </Component>
     </div>
   );
 }
