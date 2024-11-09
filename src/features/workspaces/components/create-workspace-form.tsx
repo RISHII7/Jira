@@ -7,6 +7,7 @@ import { ImageIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
+import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { DottedSeparator } from "@/components/dotted-separator";
@@ -156,7 +157,14 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
                         </div>
                         <DottedSeparator className="py-7" />
                         <div className="flex items-center justify-between">
-                            <Button type="button" size="lg" variant="secondary" onClick={onCancel} disabled={isPending}>
+                            <Button 
+                                type="button" 
+                                size="lg" 
+                                variant="secondary" 
+                                onClick={onCancel} 
+                                disabled={isPending}
+                                className={cn(!onCancel && "invisible")}
+                            >
                                 Cancel
                             </Button>
 
