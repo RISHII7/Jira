@@ -4,17 +4,18 @@ import { cn } from "@/lib/utils";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
-interface WorkspaceAvatarProps {
+interface ProjectAvatarProps {
     image?: string;
     name: string;
     className?: string;
+    fallbackClassName?: string;
 };
 
-export const WorkspaceAvatar = ({ image, name, className }: WorkspaceAvatarProps) => {
+export const ProjectAvatar = ({ image, name, className, fallbackClassName }: ProjectAvatarProps) => {
     if (image) {
         return (
             <div className={cn(
-                "size-10 relative rounded-md overflow-hidden",
+                "size-5 relative rounded-md overflow-hidden",
                 className
             )}>
                 <Image src={image} alt="" fill className="object-cover" />
@@ -24,8 +25,11 @@ export const WorkspaceAvatar = ({ image, name, className }: WorkspaceAvatarProps
     };
 
     return (
-        <Avatar className={cn("size-10 rounded-md", className)}>
-            <AvatarFallback className="text-white bg-blue-600 font-semibold text-lg uppercase rounded-md">
+        <Avatar className={cn("size-5 rounded-md", className)}>
+            <AvatarFallback className={cn(
+                "text-white bg-blue-600 font-semibold text-sm uppercase rounded-md",
+                fallbackClassName
+            )}>
                 {name[0]}
             </AvatarFallback>
         </Avatar>
