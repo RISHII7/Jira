@@ -92,17 +92,14 @@ export const columns: ColumnDef<Task>[] = [
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Due Date
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                    Due Date <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             );
         },
         cell: ({ row }) => {
             const dueDate = row.original.dueDate;
 
-            return (
-                <TaskDate value={dueDate} />
-            );
+            return <TaskDate value={dueDate} />;
         },
     },
     {
