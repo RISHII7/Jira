@@ -23,7 +23,11 @@ import { useBulkUpdateTasks } from "../api/use-bulk-update-tasks";
 import { useTaskFilters } from "../hooks/use-task-filters";
 import { useCreateTaskModal } from "../hooks/use-create-task-modal";
 
-export const TaskViewSwitcher = () => {
+interface TaskViewSwitcherProps {
+    hideProjectFilters?: boolean;
+};
+
+export const TaskViewSwitcher = ({ hideProjectFilters } : TaskViewSwitcherProps) => {
     const [view, setView] = useQueryState("task-view", { defaultValue: "table" });
     const [{ status, assigneeId, projectId, dueDate }] = useTaskFilters();
 
@@ -60,7 +64,7 @@ export const TaskViewSwitcher = () => {
                     </Button>
                 </div>
                 <DottedSeparator className="my-4" />
-                <DataFilters />
+                <DataFilters hideProjectFilter={hideProjectFilters} />
                 <DottedSeparator className="my-4" />
                 {isLoadingTasks ? (
                     <div className="w-full border rounded-lg h-[200px] flex flex-col items-center justify-center">
