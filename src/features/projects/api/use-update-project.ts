@@ -1,5 +1,4 @@
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { InferRequestType, InferResponseType } from "hono";
 
 import { client } from "@/lib/rpc";
@@ -9,7 +8,6 @@ type ResponseType = InferResponseType<typeof client.api.projects[":projectId"]["
 type RequestType = InferRequestType<typeof client.api.projects[":projectId"]["$patch"]>;
 
 export const useUpdateProject = () => {
-    const router = useRouter();
     const queryClient = useQueryClient();
 
     const mutation = useMutation<
@@ -27,7 +25,6 @@ export const useUpdateProject = () => {
         },
         onSuccess: ({ data }) => {
             toast.success("Project Updated");
-            router.refresh();
             queryClient.invalidateQueries({ queryKey: ["projects"] });
             queryClient.invalidateQueries({ queryKey: ["project", data.$id] });
         },
