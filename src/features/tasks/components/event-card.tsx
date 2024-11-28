@@ -1,7 +1,9 @@
+import React from "react";
 import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
+import { Member } from "@/features/members/types";
 import { Project } from "@/features/projects/types";
 import { MemberAvatar } from "@/features/members/components/member-avatar";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
@@ -14,7 +16,7 @@ interface EventCardProps {
 	title: string;
 	project: Project;
 	status: TaskStatus;
-	assignee: any;
+	assignee: Member;
 };
 
 const statusColorMap: Record<TaskStatus, string> = {

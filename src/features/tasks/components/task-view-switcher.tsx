@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { useQueryState } from "nuqs";
 import { Loader, PlusIcon } from "lucide-react";
 
+import { useProjectId } from "@/features/projects/hooks/use-project-id";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 
 import { Button } from "@/components/ui/button";
@@ -32,10 +33,17 @@ export const TaskViewSwitcher = ({ hideProjectFilters } : TaskViewSwitcherProps)
     const [{ status, assigneeId, projectId, dueDate }] = useTaskFilters();
 
     const workspaceId = useWorkspaceId();
+    const paramProjectId = useProjectId();
 
     const { open } = useCreateTaskModal();
     const { mutate: bulkUpdate } = useBulkUpdateTasks();
-    const { data: tasks, isLoading: isLoadingTasks } = useGetTasks({ workspaceId, projectId, assigneeId, status, dueDate });
+    const { data: tasks, isLoading: isLoadingTasks } = useGetTasks({ 
+        workspaceId, 
+        projectId: paramProjectId || projectId, 
+        assigneeId, 
+        status, 
+        dueDate 
+    });
 
     const onKanbanChange = useCallback((
         tasks: { $id: string; status: TaskStatus; position: number }[]

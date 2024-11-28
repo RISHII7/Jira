@@ -2,7 +2,6 @@
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,7 +37,6 @@ interface CreateTaskFormProps {
 };
 
 export const CreateTaskForm = ({ onCancel, memberOptions, projectOptions }: CreateTaskFormProps) => {
-    const router = useRouter();
     const workspaceId = useWorkspaceId();
     const { mutate, isPending } = useCreateTask();
 
