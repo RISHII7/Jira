@@ -7,6 +7,7 @@ import { z } from "zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
 
 import { DottedSeparator } from "@/components/dotted-separator";
 
@@ -91,11 +92,11 @@ export const SignInCard = () => {
                 <DottedSeparator />
             </div>
             <CardContent className="p-7 flex flex-col gap-y-4">
-                <Button variant="secondary" size="lg" className="w-full" disabled={isPending}>
+                <Button variant="secondary" size="lg" className="w-full" disabled={isPending} onClick={() => signUpWithGoogle()} >
                     <FcGoogle className="mr-2 size-5" />
                     Login with Google
                 </Button>
-                <Button variant="secondary" size="lg" className="w-full" disabled={isPending}>
+                <Button variant="secondary" size="lg" className="w-full" disabled={isPending} onClick={() => signUpWithGithub()}>
                     <FaGithub className="mr-2 size-5" />
                     Login with Github
                 </Button>
