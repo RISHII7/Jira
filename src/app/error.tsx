@@ -14,7 +14,7 @@ const ErrorPage = () => {
             </p>
             <Button variant="secondary" size="sm" asChild>
                 <Link href="/">
-                    Back to home.
+                    Back to home
                 </Link>
             </Button>
         </div>
